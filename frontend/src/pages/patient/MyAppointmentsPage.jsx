@@ -251,7 +251,7 @@ export default function MyAppointmentsPage() {
                 {/* Left: Info */}
                 <div className="space-y-3 flex-1">
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="font-mono text-xs font-bold text-slate-500 bg-slate-100 dark:bg-navy-800 px-2 py-0.5 rounded-md">
+                    <span className="font-mono text-xs font-bold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-navy-800 px-2 py-0.5 rounded-md border border-slate-200/60 dark:border-slate-700/60">
                       {apt.referenceNo}
                     </span>
                     <Badge status={apt.status} />
@@ -266,15 +266,15 @@ export default function MyAppointmentsPage() {
                     </p>
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500">
+                  <div className="flex flex-wrap items-center gap-4 text-xs text-slate-600 dark:text-slate-400">
                     <span className="flex items-center gap-1 font-medium text-slate-700 dark:text-slate-300">
                       <Calendar className="w-3.5 h-3.5 text-brand-600" /> {apt.appointmentDate}
                     </span>
                     <span className="flex items-center gap-1 font-medium text-slate-700 dark:text-slate-300">
                       <Clock className="w-3.5 h-3.5 text-teal-600" /> {apt.startTime?.slice(0, 5)} - {apt.endTime?.slice(0, 5)}
                     </span>
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5" /> {apt.clinicCity}
+                    <span className="flex items-center gap-1 font-medium text-slate-700 dark:text-slate-300">
+                      <MapPin className="w-3.5 h-3.5 text-slate-400" /> {apt.clinicCity}
                     </span>
                   </div>
 

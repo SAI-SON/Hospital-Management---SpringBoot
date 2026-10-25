@@ -79,7 +79,7 @@ export default function AuditLogsPage() {
         <div className="rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-xl">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50 dark:bg-navy-850 border-b border-slate-200 dark:border-slate-800 text-slate-400 uppercase font-bold text-[10px] tracking-wider">
+              <thead className="bg-slate-100/90 dark:bg-navy-800 border-b border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 uppercase font-bold text-[10px] tracking-wider">
                 <tr>
                   <th className="py-4 px-6">Timestamp</th>
                   <th className="py-4 px-6">Action</th>

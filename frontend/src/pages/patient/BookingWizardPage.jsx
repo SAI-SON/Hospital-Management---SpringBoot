@@ -479,23 +479,23 @@ export default function BookingWizardPage() {
             </div>
 
             {/* Appointment Summary Box */}
-            <div className="p-5 rounded-2xl bg-brand-50/40 dark:bg-brand-950/30 border border-brand-200/70 dark:border-brand-900 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <div className="p-5 rounded-2xl bg-brand-50/50 dark:bg-navy-800/80 border border-brand-200/80 dark:border-slate-700 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
               <div>
-                <span className="text-[10px] text-slate-400 font-bold uppercase">Doctor</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Doctor</span>
                 <p className="font-bold text-slate-900 dark:text-white mt-0.5">{doctor.fullName}</p>
-                <p className="text-[11px] text-brand-600">{doctor.specialization?.name}</p>
+                <p className="text-[11px] text-brand-600 dark:text-brand-400 font-semibold">{doctor.specialization?.name}</p>
               </div>
               <div>
-                <span className="text-[10px] text-slate-400 font-bold uppercase">Date & Time</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Date & Time</span>
                 <p className="font-bold text-slate-900 dark:text-white mt-0.5">{format(selectedDate, 'MMM dd, yyyy')}</p>
-                <p className="text-[11px] text-emerald-600 font-semibold">
+                <p className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
                   {selectedSlot ? getSlotDetails(selectedSlot).displayTime : ''}
                 </p>
               </div>
               <div>
-                <span className="text-[10px] text-slate-400 font-bold uppercase">Hospital Location</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Hospital Location</span>
                 <p className="font-bold text-slate-900 dark:text-white mt-0.5">{doctor.clinicCity}</p>
-                <p className="text-[11px] text-slate-500">{doctor.clinicAddress || 'Hospital Main Pavilion'}</p>
+                <p className="text-[11px] text-slate-600 dark:text-slate-300">{doctor.clinicAddress || 'Hospital Main Pavilion'}</p>
               </div>
             </div>
 
@@ -563,31 +563,31 @@ export default function BookingWizardPage() {
               <h2 className="text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
                 You're All Set!
               </h2>
-              <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+              <p className="text-sm font-medium text-slate-600 dark:text-slate-300 max-w-md mx-auto">
                 Your consultation has been reserved. A confirmation email and calendar invite have been dispatched.
               </p>
             </div>
 
             {/* Reference Badge Card */}
-            <div className="max-w-md mx-auto p-5 rounded-2xl bg-slate-50 dark:bg-navy-850 border border-slate-200 dark:border-slate-700/80 space-y-3 text-left text-xs">
+            <div className="max-w-md mx-auto p-6 rounded-2xl bg-slate-100/90 dark:bg-navy-800 border border-slate-200 dark:border-slate-700 space-y-3.5 text-left text-xs shadow-sm">
               <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700">
-                <span className="text-slate-400 font-semibold">Reference Code:</span>
-                <span className="font-mono font-bold text-brand-600 dark:text-brand-400 text-sm">
+                <span className="text-slate-600 dark:text-slate-300 font-semibold">Reference Code:</span>
+                <span className="font-mono font-extrabold text-brand-600 dark:text-brand-400 text-sm">
                   {confirmedBooking.referenceNo}
                 </span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Doctor:</span>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600 dark:text-slate-300 font-medium">Doctor:</span>
                 <span className="font-bold text-slate-900 dark:text-white">{confirmedBooking.doctorName}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Date & Time:</span>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600 dark:text-slate-300 font-medium">Date & Time:</span>
                 <span className="font-bold text-slate-900 dark:text-white">
                   {confirmedBooking.appointmentDate} at {confirmedBooking.startTime?.slice(0, 5)}
                 </span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-400">Clinic:</span>
+              <div className="flex justify-between items-center">
+                <span className="text-slate-600 dark:text-slate-300 font-medium">Clinic:</span>
                 <span className="font-bold text-slate-900 dark:text-white">{confirmedBooking.clinicCity}</span>
               </div>
             </div>

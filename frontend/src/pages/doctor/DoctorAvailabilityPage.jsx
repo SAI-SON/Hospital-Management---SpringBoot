@@ -212,8 +212,8 @@ export default function DoctorAvailabilityPage() {
                   key={item.dayOfWeek}
                   className={`p-4 rounded-2xl border transition-all ${
                     item.isActive
-                      ? 'border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-navy-850'
-                      : 'border-slate-100 dark:border-slate-800/60 bg-slate-50/20 opacity-60'
+                      ? 'border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-navy-800'
+                      : 'border-slate-200/60 dark:border-slate-800/60 bg-slate-100/40 dark:bg-navy-900/50 text-slate-400'
                   }`}
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">

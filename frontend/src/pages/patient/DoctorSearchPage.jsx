@@ -300,14 +300,14 @@ export default function DoctorSearchPage() {
                       </div>
 
                       {/* Stats pill */}
-                      <div className="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-slate-50 dark:bg-navy-800/60 text-xs">
+                      <div className="grid grid-cols-2 gap-2 p-2.5 rounded-xl bg-slate-100/80 dark:bg-navy-800 border border-slate-200/60 dark:border-slate-700/60 text-xs">
                         <div>
-                          <p className="text-[10px] text-slate-400 uppercase font-semibold">Experience</p>
-                          <p className="font-bold text-slate-800 dark:text-slate-200">{doc.yearsOfExperience} years</p>
+                          <p className="text-[10px] text-slate-600 dark:text-slate-400 uppercase font-bold tracking-wider">Experience</p>
+                          <p className="font-bold text-slate-900 dark:text-white">{doc.yearsOfExperience} years</p>
                         </div>
                         <div>
-                          <p className="text-[10px] text-slate-400 uppercase font-semibold">Fee</p>
-                          <p className="font-bold text-slate-800 dark:text-slate-200">${doc.consultationFee}</p>
+                          <p className="text-[10px] text-slate-600 dark:text-slate-400 uppercase font-bold tracking-wider">Fee</p>
+                          <p className="font-bold text-slate-900 dark:text-white">${doc.consultationFee}</p>
                         </div>
                       </div>
 

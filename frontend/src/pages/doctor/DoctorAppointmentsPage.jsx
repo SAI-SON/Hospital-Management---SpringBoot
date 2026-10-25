@@ -103,7 +103,7 @@ export default function DoctorAppointmentsPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-slate-400">Date:</span>
+            <span className="text-slate-600 dark:text-slate-400 font-medium">Date:</span>
             <input
               type="date"
               value={filterDate}
@@ -111,19 +111,19 @@ export default function DoctorAppointmentsPage() {
                 setFilterDate(e.target.value);
                 setPage(0);
               }}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-navy-800 text-xs outline-none"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-navy-800 text-slate-800 dark:text-slate-100 text-xs outline-none"
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-slate-400">Status:</span>
+            <span className="text-slate-600 dark:text-slate-400 font-medium">Status:</span>
             <select
               value={filterStatus}
               onChange={(e) => {
                 setFilterStatus(e.target.value);
                 setPage(0);
               }}
-              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-navy-800 text-xs outline-none cursor-pointer"
+              className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-navy-800 text-slate-800 dark:text-slate-100 text-xs outline-none cursor-pointer"
             >
               <option value="">All Statuses</option>
               <option value="PENDING">PENDING</option>
@@ -142,7 +142,7 @@ export default function DoctorAppointmentsPage() {
                 setFilterStatus('');
                 setPage(0);
               }}
-              className="ml-auto text-xs font-bold text-slate-400 hover:text-brand-600 flex items-center gap-1"
+              className="ml-auto text-xs font-bold text-slate-500 hover:text-brand-600 flex items-center gap-1"
             >
               <RotateCcw className="w-3 h-3" /> Clear
             </button>
@@ -170,7 +170,7 @@ export default function DoctorAppointmentsPage() {
               >
                 <div className="space-y-2 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-slate-500 bg-slate-100 dark:bg-navy-800 px-2 py-0.5 rounded">
+                    <span className="font-mono text-xs font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-navy-800 px-2 py-0.5 rounded">
                       {apt.referenceNo}
                     </span>
                     <Badge status={apt.status} />
@@ -183,7 +183,7 @@ export default function DoctorAppointmentsPage() {
                     <h3 className="font-heading font-bold text-sm text-slate-900 dark:text-white">
                       {apt.patientName}
                     </h3>
-                    <p className="text-xs text-slate-500">Phone: {apt.patientPhone || 'Not provided'}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-400">Phone: {apt.patientPhone || 'Not provided'}</p>
                   </div>
 
                   {apt.reason && (

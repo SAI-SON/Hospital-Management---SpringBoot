@@ -30,6 +30,7 @@ export default {
           600: '#486581',
           700: '#334e68',
           800: '#243b53',
+          850: '#162238', // Elevated Dark Surface
           900: '#0f172a', // Deep Navy
           950: '#0a0f1d',
         },

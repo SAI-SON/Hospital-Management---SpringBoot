@@ -113,7 +113,7 @@ export default function DoctorDashboardPage() {
         {/* 4 Stat KPIs */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Today's Visits</span>
               <Calendar className="w-4 h-4 text-brand-600" />
             </div>
@@ -124,7 +124,7 @@ export default function DoctorDashboardPage() {
           </div>
 
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Pending Action</span>
               <AlertCircle className="w-4 h-4 text-amber-500" />
             </div>
@@ -135,7 +135,7 @@ export default function DoctorDashboardPage() {
           </div>
 
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Completed</span>
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
             </div>
@@ -146,7 +146,7 @@ export default function DoctorDashboardPage() {
           </div>
 
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Rating Avg</span>
               <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
             </div>

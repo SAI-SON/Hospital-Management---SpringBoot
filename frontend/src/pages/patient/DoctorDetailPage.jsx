@@ -120,20 +120,20 @@ export default function DoctorDetailPage() {
 
               {/* Rating and fee breakdown */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100 dark:border-slate-800 text-center">
-                <div className="p-3 rounded-2xl bg-slate-50 dark:bg-navy-800/60">
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Patient Rating</p>
+                <div className="p-3 rounded-2xl bg-slate-100/80 dark:bg-navy-800 border border-slate-200/60 dark:border-slate-700/60">
+                  <p className="text-[10px] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Patient Rating</p>
                   <div className="flex justify-center mt-1">
                     <RatingStars rating={doctor.ratingAverage} totalReviews={doctor.totalReviews} />
                   </div>
                 </div>
-                <div className="p-3 rounded-2xl bg-slate-50 dark:bg-navy-800/60">
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Consultation Fee</p>
+                <div className="p-3 rounded-2xl bg-slate-100/80 dark:bg-navy-800 border border-slate-200/60 dark:border-slate-700/60">
+                  <p className="text-[10px] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Consultation Fee</p>
                   <p className="text-base font-extrabold text-slate-900 dark:text-white mt-1">
                     ${doctor.consultationFee}
                   </p>
                 </div>
-                <div className="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-slate-50 dark:bg-navy-800/60">
-                  <p className="text-[10px] text-slate-400 font-bold uppercase">Next Available</p>
+                <div className="col-span-2 sm:col-span-1 p-3 rounded-2xl bg-slate-100/80 dark:bg-navy-800 border border-slate-200/60 dark:border-slate-700/60">
+                  <p className="text-[10px] text-slate-600 dark:text-slate-400 font-bold uppercase tracking-wider">Next Available</p>
                   <p className="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 mt-1">
                     Slots Open Today
                   </p>
@@ -176,10 +176,10 @@ export default function DoctorDetailPage() {
                   return (
                     <div
                       key={dayNum}
-                      className={`p-3 rounded-2xl border text-xs flex items-center justify-between ${
+                      className={`p-3 rounded-2xl border text-xs flex items-center justify-between transition-colors ${
                         isAvailable
-                          ? 'border-brand-200/80 dark:border-brand-800/80 bg-brand-50/40 dark:bg-brand-950/20'
-                          : 'border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-navy-850 opacity-60'
+                          ? 'border-brand-200/80 dark:border-brand-800/80 bg-brand-50/50 dark:bg-brand-950/40 text-brand-950 dark:text-brand-100'
+                          : 'border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-navy-800 text-slate-500 dark:text-slate-400'
                       }`}
                     >
                       <span className="font-bold text-slate-800 dark:text-slate-200">{dayName}</span>

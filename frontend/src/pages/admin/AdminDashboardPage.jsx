@@ -91,7 +91,7 @@ export default function AdminDashboardPage() {
         {/* Top 4 KPI Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Registered Patients</span>
               <Users className="w-4 h-4 text-brand-600" />
             </div>
@@ -102,7 +102,7 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Verified Doctors</span>
               <UserCheck className="w-4 h-4 text-teal-500" />
             </div>
@@ -113,7 +113,7 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Total Bookings</span>
               <Calendar className="w-4 h-4 text-emerald-500" />
             </div>
@@ -124,7 +124,7 @@ export default function AdminDashboardPage() {
           </div>
 
           <div className="p-5 rounded-3xl glass-card bg-white dark:bg-navy-900 border border-slate-200/80 dark:border-slate-800 space-y-1">
-            <div className="flex items-center justify-between text-slate-400">
+            <div className="flex items-center justify-between text-slate-500 dark:text-slate-400">
               <span className="text-[11px] font-bold uppercase tracking-wider">Consultation Revenue</span>
               <DollarSign className="w-4 h-4 text-coral-500" />
             </div>
