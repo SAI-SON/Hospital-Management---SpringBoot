@@ -11,6 +11,28 @@
 
 ---
 
+## 🚀 Live Demo & Deployment
+
+| Service | Live URL | Hosting Platform | Status |
+| :--- | :--- | :--- | :--- |
+| **🌐 Web Application (Frontend)** | **[https://medibook-frontend-qxny.onrender.com](https://medibook-frontend-qxny.onrender.com)** | Render (Global CDN) | ![Online](https://img.shields.io/badge/Status-Online-emerald.svg) |
+| **⚡ REST API (Backend)** | **[https://medibook-backend-uyz7.onrender.com](https://medibook-backend-uyz7.onrender.com)** | Render (Docker / Java 17) | ![Online](https://img.shields.io/badge/Status-Online-emerald.svg) |
+| **🐘 Database** | Neon Serverless PostgreSQL 16 | Neon Cloud | ![Connected](https://img.shields.io/badge/Status-Connected-blue.svg) |
+
+> 🔗 **Explore Live Demo**: **[https://medibook-frontend-qxny.onrender.com](https://medibook-frontend-qxny.onrender.com)**  
+> *Supports instant Google Sign-In or test login using any of the demo accounts below.*
+
+### 🔑 Demo Accounts for Testing
+
+| Role | Email | Password | Access & Capabilities |
+| :--- | :--- | :--- | :--- |
+| **Admin** | `admin@medibook.com` | `Admin@123` | Doctor verification, user management, audit logs, revenue metrics |
+| **Doctor** | `doctor.sarah@medibook.com` | `Admin@123` | Appointment management, slot generation, leaves, consultation notes |
+| **Patient** | `patient.john@medibook.com` | `Admin@123` | Doctor search, booking wizard, appointment history, reviews |
+| **New User** | Any Google Account | *1-Click Google Sign-In* | Instant signup & automatic Neon profile sync |
+
+---
+
 ## 🌟 Key Highlights & Features
 
 - 🔒 **Zero Double-Booking Guarantee**: Concurrency-safe slot reservations combining PostgreSQL database constraints, Pessimistic Locking (`PESSIMISTIC_WRITE`), and JPA `@Version` Optimistic locking.
