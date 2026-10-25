@@ -1,0 +1,43 @@
+services:
+  # ---------------------------------------------------------------------------
+  # 1. MediBook Backend (Spring Boot Web Service via Docker)
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: medibook-backend
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    dockerContext: backend
+    plan: free
+    region: oregon
+    healthCheckPath: /api/v1/specializations
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false
+      - key: SERVER_PORT
+        value: 8080
+
+  # ---------------------------------------------------------------------------
+  # 2. MediBook Frontend (React + Vite Static Site)
+  # ---------------------------------------------------------------------------
+  - type: web
+    name: medibook-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    plan: free
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false
