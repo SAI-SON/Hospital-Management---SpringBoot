@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Rate Your Doctor Visit</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 20px; }
+    .container { max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .header { background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); padding: 32px 24px; text-align: center; color: #ffffff; }
+    .content { padding: 32px 28px; line-height: 1.6; }
+    .btn { display: inline-block; background-color: #f59e0b; color: #ffffff !important; text-decoration: none; padding: 14px 32px; border-radius: 12px; font-weight: 600; margin: 20px 0; }
+    .footer { padding: 20px 28px; background: #f1f5f9; text-align: center; font-size: 13px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🏥 MediBook</h1>
+    </div>
+    <div class="content">
+      <h2>How Was Your Visit?</h2>
+      <p>Hello <span th:text="${name}">Patient</span>,</p>
+      <p>Your recent appointment with <strong th:text="${doctorName}">Doctor</strong> has concluded. We would love to hear about your experience to help other patients and assist our doctors in delivering the highest quality care.</p>
+      <div style="text-align: center;">
+        <a class="btn" th:href="${actionUrl}">⭐ Leave a Doctor Review</a>
+      </div>
+    </div>
+    <div class="footer">
+      &copy; MediBook Hospital Appointment System. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Appointment Confirmed</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #1e293b; margin: 0; padding: 20px; }
+    .container { max-width: 580px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .header { background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%); padding: 32px 24px; text-align: center; color: #ffffff; }
+    .content { padding: 32px 28px; line-height: 1.6; }
+    .card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin: 20px 0; }
+    .btn { display: inline-block; background-color: #0d9488; color: #ffffff !important; text-decoration: none; padding: 14px 32px; border-radius: 12px; font-weight: 600; margin: 16px 0; }
+    .footer { padding: 20px 28px; background: #f1f5f9; text-align: center; font-size: 13px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🏥 MediBook</h1>
+    </div>
+    <div class="content">
+      <h2>Appointment Confirmed!</h2>
+      <p>Hello <span th:text="${name}">Patient</span>,</p>
+      <p>Your medical consultation has been successfully booked. Here are your appointment details:</p>
+      <div class="card">
+        <p><strong>Reference No:</strong> <span th:text="${referenceNo}">MB-1234</span></p>
+        <p><strong>Doctor:</strong> <span th:text="${doctorName}">Dr. Smith</span></p>
+        <p><strong>Date & Time:</strong> <span th:text="${dateTime}">Oct 25, 2026 at 10:00 AM</span></p>
+      </div>
+      <div style="text-align: center;">
+        <a class="btn" th:href="${actionUrl}">View My Appointments</a>
+      </div>
+      <p style="font-size: 14px; color: #64748b;">Note: Cancellations or rescheduling can be made up to 2 hours prior to the appointment time.</p>
+    </div>
+    <div class="footer">
+      &copy; MediBook Hospital Appointment System. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
