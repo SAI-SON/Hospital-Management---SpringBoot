@@ -29,11 +29,10 @@ services:
   # ---------------------------------------------------------------------------
   - type: web
     name: medibook-frontend
-    env: static
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    plan: free
     routes:
       - type: rewrite
         source: /*
