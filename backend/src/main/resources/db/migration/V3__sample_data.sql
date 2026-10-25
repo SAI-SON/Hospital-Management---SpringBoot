@@ -165,12 +165,52 @@ ON CONFLICT (doctor_id, day_of_week) DO UPDATE SET is_active = true;
 
 -- Doctor 4 (Michael)
 INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration_minutes, break_start_time, break_end_time, is_active) VALUES
+(4, 1, '11:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
 (4, 2, '11:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
 (4, 3, '11:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
 (4, 4, '11:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
 (4, 5, '11:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
 (4, 6, '10:00:00', '14:00:00', 30, NULL, NULL, true)
 ON CONFLICT (doctor_id, day_of_week) DO UPDATE SET is_active = true;
+
+-- Doctor 5 (Dr. Ananya Desai, Dermatology)
+INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration_minutes, break_start_time, break_end_time, is_active) VALUES
+(5, 1, '09:30:00', '16:30:00', 30, '13:00:00', '14:00:00', true),
+(5, 2, '09:30:00', '16:30:00', 30, '13:00:00', '14:00:00', true),
+(5, 3, '09:30:00', '16:30:00', 30, '13:00:00', '14:00:00', true),
+(5, 4, '09:30:00', '16:30:00', 30, '13:00:00', '14:00:00', true),
+(5, 5, '09:30:00', '16:30:00', 30, '13:00:00', '14:00:00', true),
+(5, 6, '10:00:00', '14:00:00', 30, NULL, NULL, true)
+ON CONFLICT (doctor_id, day_of_week) DO UPDATE SET is_active = true;
+
+-- Doctor 6 (Dr. Vikram Malhotra, Neurology)
+INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration_minutes, break_start_time, break_end_time, is_active) VALUES
+(6, 1, '09:00:00', '15:00:00', 30, '12:30:00', '13:30:00', true),
+(6, 2, '09:00:00', '15:00:00', 30, '12:30:00', '13:30:00', true),
+(6, 3, '09:00:00', '15:00:00', 30, '12:30:00', '13:30:00', true),
+(6, 4, '09:00:00', '15:00:00', 30, '12:30:00', '13:30:00', true),
+(6, 5, '09:00:00', '15:00:00', 30, '12:30:00', '13:30:00', true)
+ON CONFLICT (doctor_id, day_of_week) DO UPDATE SET is_active = true;
+
+-- Doctor 7 (Dr. Kavitha Sundaram, Gynecology)
+INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration_minutes, break_start_time, break_end_time, is_active) VALUES
+(7, 1, '10:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
+(7, 2, '10:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
+(7, 3, '10:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
+(7, 4, '10:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
+(7, 5, '10:00:00', '17:00:00', 30, '13:30:00', '14:30:00', true),
+(7, 6, '10:00:00', '14:00:00', 30, NULL, NULL, true)
+ON CONFLICT (doctor_id, day_of_week) DO UPDATE SET is_active = true;
+
+-- Doctor 8 (Dr. David Miller, Psychiatry)
+INSERT INTO doctor_availability (doctor_id, day_of_week, start_time, end_time, slot_duration_minutes, break_start_time, break_end_time, is_active) VALUES
+(8, 1, '10:00:00', '16:00:00', 30, '13:00:00', '14:00:00', true),
+(8, 2, '10:00:00', '16:00:00', 30, '13:00:00', '14:00:00', true),
+(8, 3, '10:00:00', '16:00:00', 30, '13:00:00', '14:00:00', true),
+(8, 4, '10:00:00', '16:00:00', 30, '13:00:00', '14:00:00', true),
+(8, 5, '10:00:00', '16:00:00', 30, '13:00:00', '14:00:00', true)
+ON CONFLICT (doctor_id, day_of_week) DO UPDATE SET is_active = true;
+
 
 -- 6. INSERT UPCOMING BOOKABLE SLOTS FOR THE NEXT 5 DAYS (Relative to CURRENT_DATE)
 -- Dr. Sarah (Doctor 1) Tomorrow

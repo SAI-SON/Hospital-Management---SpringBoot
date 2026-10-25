@@ -132,11 +132,10 @@ public class SlotServiceImpl implements SlotService {
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<SlotDto> getAvailableSlotsByDoctorAndDate(Long doctorId, LocalDate date) {
-        if (!doctorRepository.existsById(doctorId)) {
-            throw new ResourceNotFoundException("Doctor not found with id: " + doctorId);
-        }
+        Doctor doctor = doctorRepository.findById(doctorId)
+                .orElseThrow(() -> new ResourceNotFoundException("Doctor not found with id: " + doctorId));
 
         Instant startRange = date.atStartOfDay(ZONE).toInstant();
         Instant endRange = date.atTime(LocalTime.MAX).atZone(ZONE).toInstant();
@@ -145,8 +144,26 @@ public class SlotServiceImpl implements SlotService {
         // Effective start is max of (startOfDay, now) to prevent booking past slots
         Instant effectiveStart = startRange.isBefore(now) ? now : startRange;
 
-        return slotRepository.findAvailableSlotsByDoctorAndRange(doctorId, effectiveStart, endRange)
-                .stream()
+        List<Slot> availableSlots = slotRepository.findAvailableSlotsByDoctorAndRange(doctorId, effectiveStart, endRange);
+
+        // On-demand auto-generation:
+        // If no slots exist for this date, and the date is between today and max advance days,
+        // automatically generate slots using the doctor's weekly availability schedule
+        LocalDate today = LocalDate.now();
+        if (availableSlots.isEmpty() && !date.isBefore(today) && !date.isAfter(today.plusDays(MAX_ADVANCE_DAYS))) {
+            List<Slot> allSlotsForDay = slotRepository.findSlotsByDoctorAndRange(doctorId, startRange, endRange);
+            if (allSlotsForDay.isEmpty()) {
+                int dayOfWeekValue = date.getDayOfWeek().getValue();
+                var availabilityOpt = availabilityRepository.findByDoctorAndDayOfWeek(doctor, dayOfWeekValue);
+                if (availabilityOpt.isPresent() && availabilityOpt.get().isActive() && !leaveRepository.existsByDoctorAndLeaveDate(doctor, date)) {
+                    log.info("Auto-generating slots for doctor id {} on {}", doctorId, date);
+                    generateSlots(doctorId, GenerateSlotsRequest.builder().startDate(date).endDate(date).build());
+                    availableSlots = slotRepository.findAvailableSlotsByDoctorAndRange(doctorId, effectiveStart, endRange);
+                }
+            }
+        }
+
+        return availableSlots.stream()
                 .map(this::toDto)
                 .toList();
     }
@@ -168,11 +185,17 @@ public class SlotServiceImpl implements SlotService {
     }
 
     private SlotDto toDto(Slot slot) {
+        var timeFmt = java.time.format.DateTimeFormatter.ofPattern("HH:mm");
+        ZonedDateTime startZdt = slot.getSlotStart().atZone(ZONE);
+        ZonedDateTime endZdt = slot.getSlotEnd().atZone(ZONE);
+
         return SlotDto.builder()
                 .id(slot.getId())
                 .doctorId(slot.getDoctor().getId())
                 .slotStart(slot.getSlotStart())
                 .slotEnd(slot.getSlotEnd())
+                .startTime(startZdt.format(timeFmt))
+                .endTime(endZdt.format(timeFmt))
                 .isBooked(slot.isBooked())
                 .build();
     }

@@ -16,5 +16,7 @@ public class SlotDto {
     private Long doctorId;
     private Instant slotStart;
     private Instant slotEnd;
+    private String startTime;
+    private String endTime;
     private boolean isBooked;
 }

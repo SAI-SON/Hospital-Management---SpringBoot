@@ -113,21 +113,44 @@ export default function BookingWizardPage() {
     }
   };
 
+  // Helper to extract time string and hour for any slot format
+  const getSlotDetails = (s) => {
+    if (!s) return { startTime: '', endTime: '', hour: 0, displayTime: '' };
+    let startStr = s.startTime;
+    let endStr = s.endTime;
+    let hour = 9;
+
+    if (s.slotStart) {
+      const dt = new Date(s.slotStart);
+      if (!isNaN(dt.getTime())) {
+        hour = dt.getHours();
+        if (!startStr) {
+          startStr = dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+      }
+    }
+    if (s.slotEnd && !endStr) {
+      const dt = new Date(s.slotEnd);
+      if (!isNaN(dt.getTime())) {
+        endStr = dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
+      }
+    }
+
+    if (startStr && !hour && startStr.includes(':')) {
+      hour = parseInt(startStr.split(':')[0], 10);
+    }
+
+    const displayTime = startStr && endStr ? `${startStr} - ${endStr}` : (startStr || 'Available Slot');
+    return { startTime: startStr, endTime: endStr, hour, displayTime };
+  };
+
   // Group slots by Morning / Afternoon / Evening
-  const morningSlots = slots.filter((s) => {
-    const hour = parseInt(s.startTime?.split(':')[0], 10);
-    return hour < 12;
-  });
-
+  const morningSlots = slots.filter((s) => getSlotDetails(s).hour < 12);
   const afternoonSlots = slots.filter((s) => {
-    const hour = parseInt(s.startTime?.split(':')[0], 10);
-    return hour >= 12 && hour < 17;
+    const h = getSlotDetails(s).hour;
+    return h >= 12 && h < 17;
   });
-
-  const eveningSlots = slots.filter((s) => {
-    const hour = parseInt(s.startTime?.split(':')[0], 10);
-    return hour >= 17;
-  });
+  const eveningSlots = slots.filter((s) => getSlotDetails(s).hour >= 17);
 
   if (loadingDoc) {
     return (
@@ -283,7 +306,7 @@ export default function BookingWizardPage() {
                   No Available Slots on This Date
                 </h4>
                 <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                  Dr. {doctor.fullName} has no open slots on {format(selectedDate, 'MMM dd')}. Please pick another date.
+                  {(doctor.fullName?.startsWith('Dr') ? doctor.fullName : `Dr. ${doctor.fullName}`)} has no open slots on {format(selectedDate, 'MMM dd')}. Please pick another date.
                 </p>
                 <button
                   type="button"
@@ -318,7 +341,7 @@ export default function BookingWizardPage() {
                                 : 'bg-white dark:bg-navy-800/80 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-brand-500'
                             }`}
                           >
-                            {slot.startTime?.slice(0, 5)} - {slot.endTime?.slice(0, 5)}
+                            {getSlotDetails(slot).displayTime}
                           </button>
                         );
                       })}
@@ -349,7 +372,7 @@ export default function BookingWizardPage() {
                                 : 'bg-white dark:bg-navy-800/80 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-brand-500'
                             }`}
                           >
-                            {slot.startTime?.slice(0, 5)} - {slot.endTime?.slice(0, 5)}
+                            {getSlotDetails(slot).displayTime}
                           </button>
                         );
                       })}
@@ -380,7 +403,38 @@ export default function BookingWizardPage() {
                                 : 'bg-white dark:bg-navy-800/80 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-brand-500'
                             }`}
                           >
-                            {slot.startTime?.slice(0, 5)} - {slot.endTime?.slice(0, 5)}
+                            {getSlotDetails(slot).displayTime}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* Fallback if no specific period matched */}
+                {morningSlots.length === 0 && afternoonSlots.length === 0 && eveningSlots.length === 0 && slots.length > 0 && (
+                  <div className="space-y-2.5">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Available Slots
+                    </h4>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                      {slots.map((slot) => {
+                        const isSelected = selectedSlot?.id === slot.id;
+                        return (
+                          <button
+                            type="button"
+                            key={slot.id}
+                            disabled={slot.booked}
+                            onClick={() => setSelectedSlot(slot)}
+                            className={`py-2.5 px-3 rounded-xl text-xs font-bold border transition-all ${
+                              slot.booked
+                                ? 'bg-slate-100 dark:bg-navy-800 text-slate-400 border-slate-200 dark:border-slate-800 cursor-not-allowed line-through opacity-60'
+                                : isSelected
+                                ? 'bg-brand-600 text-white border-brand-600 shadow-md shadow-brand-500/30 ring-2 ring-brand-500/50'
+                                : 'bg-white dark:bg-navy-800/80 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:border-brand-500'
+                            }`}
+                          >
+                            {getSlotDetails(slot).displayTime}
                           </button>
                         );
                       })}
@@ -435,7 +489,7 @@ export default function BookingWizardPage() {
                 <span className="text-[10px] text-slate-400 font-bold uppercase">Date & Time</span>
                 <p className="font-bold text-slate-900 dark:text-white mt-0.5">{format(selectedDate, 'MMM dd, yyyy')}</p>
                 <p className="text-[11px] text-emerald-600 font-semibold">
-                  {selectedSlot?.startTime?.slice(0, 5)} - {selectedSlot?.endTime?.slice(0, 5)}
+                  {selectedSlot ? getSlotDetails(selectedSlot).displayTime : ''}
                 </p>
               </div>
               <div>
