@@ -31,7 +31,7 @@ COPY --from=builder /workspace/target/*.jar app.jar
 
 EXPOSE 8080
 
-# Tune memory allocation for containerized environments
-ENV JAVA_OPTS="-XX:+UseG1GC -XX:MaxRAMPercentage=75.0"
+# Tune memory allocation for 512MB containerized environments (Render / Railway free tiers)
+ENV JAVA_OPTS="-XX:+UseSerialGC -Xms128m -Xmx256m -XX:MaxMetaspaceSize=128m -Xss512k -XX:TieredStopAtLevel=1"
 
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
